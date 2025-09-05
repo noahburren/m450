@@ -1,79 +1,70 @@
 package ch.schule.bank.junit5;
 
-import ch.schule.Bank;
+import ch.schule.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class BankTests {
 
-/**
- * Tests f�r die Klasse 'Bank'.
- *
- * @author xxxx
- * @version 1.0
- */
-public class BankTests {
-    /**
-     * Tests to create new Accounts
-     */
     @Test
-    public void testCreate() {
+    void create_and_transact_savings_via_bank() {
+        Bank bank = new Bank();
+        String id = bank.createSavingsAccount();  // "S-<nr>"
+        assertTrue(id.startsWith("S-"));
 
-        fail("toDo");
-    }
-    /**
-     * Testet das Einzahlen auf ein Konto.
-     */
-    @Test
-    public void testDeposit() {
-        fail("toDo");
-    }
-    /**
-     * Testet das Abheben von einem Konto.
-     */
-    @Test
-    public void testWithdraw() {
-        fail("toDo");
+        assertTrue(bank.deposit(id, 10_000, 100_00_000)); // 100 CHF
+        // SavingsAccount hat KEIN Bonus – PromoYouth hat Bonus
+        assertEquals(100_00_000, bank.getBalance(id));
+
+        assertTrue(bank.withdraw(id, 10_001, 20_00_000));
+        assertEquals(80_00_000, bank.getBalance(id));
     }
 
-    /**
-     * Experimente mit print().
-     */
     @Test
-    public void testPrint() {
-        fail("toDo");
+    void create_promo_youth_gets_bonus_on_deposit() {
+        Bank bank = new Bank();
+        String id = bank.createPromoYouthSavingsAccount(); // "Y-<nr>"
+        assertTrue(bank.deposit(id, 12_000, 100_00_000));
+        // +1% → 101 CHF
+        assertEquals(101_00_000, bank.getBalance(id));
     }
 
-    /**
-     * Experimente mit print(year, month).
-     */
     @Test
-    public void testMonthlyPrint() {
-        fail("toDo");
+    void unknown_account_returns_false_or_zero() {
+        Bank bank = new Bank();
+        assertFalse(bank.deposit("Z-404", 10_000, 1_00_000));
+        assertFalse(bank.withdraw("Z-404", 10_000, 1_00_000));
+        assertEquals(0, bank.getBalance("Z-404"));
     }
 
-    /**
-     * Testet den Gesamtkontostand der Bank.
-     */
     @Test
-    public void testBalance() {
-        fail("toDo");
-    }
+    void print_account_statement_and_top_bottom_5() {
+        Bank bank = new Bank();
+        // Erzeuge einige Konten/Saldos
+        String a = bank.createSavingsAccount();
+        String b = bank.createSavingsAccount();
+        String c = bank.createSavingsAccount();
+        bank.deposit(a, 10_000, 10_00_000);
+        bank.deposit(b, 10_000, 20_00_000);
+        bank.deposit(c, 10_000, 30_00_000);
 
-    /**
-     * Tested die Ausgabe der "top 5" konten.
-     */
-    @Test
-    public void testTop5() {
-        fail("toDo");
+        // print(id)
+        var baos = new java.io.ByteArrayOutputStream();
+        var old = System.out;
+        System.setOut(new java.io.PrintStream(baos));
+        try {
+            bank.print(a);
+            bank.printTop5();
+            bank.printBottom5();
+        } finally {
+            System.setOut(old);
+        }
+        String out = baos.toString();
+        assertTrue(out.contains(a));
+        // mind. eine ID-Zeile mit "ID: Saldo"
+        assertTrue(Pattern.compile("\\w-\\d+:\\s+-?\\d+").matcher(out).find());
     }
-
-    /**
-     * Tested die Ausgabe der "top 5" konten.
-     */
-    @Test
-    public void testBottom5() {
-        fail("toDo");
-    }
-
 }
