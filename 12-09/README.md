@@ -8,11 +8,11 @@
 - Adressen erstellen & testen.  
 - Service-Tests mit **H2-Datenbank gemockt**.  
 - Comparator-Klasse korrekt implementieren.  
-👉 [Screenshots ansehen](./tests-screenshots.md#aufgabe-1---tests--comparator)
+👉 [Screenshots ansehen](./aufgabe1)
 
 ---
 
 ### Aufgabe 2 – Erweiterung Comparator
 - Comparator-Klasse um zusätzliche Attribute erweitern.  
 - Neue Funktionalität mit Tests absichern.  
-👉 [Screenshots ansehen](./tests-screenshots.md#aufgabe-2---erweiterung-comparator)
+👉 [Screenshots ansehen](./aufgabe2)
