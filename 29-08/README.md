@@ -12,5 +12,5 @@ Definieren Sie die 5 wichtigsten funktionalen Tests (Tabelle inkl. erwartetes/ef
 
 ---
 
-### [Übung 3 – Bank-Software (GSON, OKHTTP)](./aufgabe2.md)
+### [Übung 3 – Bank-Software (GSON, OKHTTP)](./aufgabe3.md)
 Identifizieren Sie Black-Box-Testfälle, mögliche White-Box-Ziele und Verbesserungen/Best Practices (Tabellen & Liste).
