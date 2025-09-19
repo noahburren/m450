@@ -24,4 +24,4 @@
 ### Aufgabe 4 – Unit-Tests für Banken-Simulation
 - **Tests zu Ein-/Auszahlungen, Bonus, Kreditlimit, Chronologie.**  
 - Abgedeckt mit **JUnit 5**, Coverage geprüft.  
-👉 [Screenshots ansehen](./aufgabe_4)
+👉 [Screenshots ansehen](./aufgabe_4.md)
