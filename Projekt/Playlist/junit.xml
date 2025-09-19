@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="3.583">
+  <testsuite name="App" errors="0" failures="0" skipped="0" timestamp="2025-09-19T08:40:31" time="2.334" tests="2">
+    <testcase classname="App should create the app" name="App should create the app" time="0.086">
+    </testcase>
+    <testcase classname="App should render title" name="App should render title" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="PlaylistService" errors="0" failures="0" skipped="0" timestamp="2025-09-19T08:40:34" time="0.227" tests="1">
+    <testcase classname="PlaylistService returns only liked tracks sorted by artist then title" name="PlaylistService returns only liked tracks sorted by artist then title" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="LikedListComponent" errors="0" failures="0" skipped="0" timestamp="2025-09-19T08:40:34" time="0.225" tests="1">
+    <testcase classname="LikedListComponent renders liked tracks list" name="LikedListComponent renders liked tracks list" time="0.02">
+    </testcase>
+  </testsuite>
+</testsuites>

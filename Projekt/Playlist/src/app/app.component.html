@@ -1,0 +1,11 @@
+<header class="shell">
+  <div class="brand">Playlist</div>
+  <nav class="nav" aria-label="Main">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/liked" routerLinkActive="active">Liked</a>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
