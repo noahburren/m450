@@ -19,10 +19,12 @@ mit Praxisbeispielen und Durchführung.
 
 ---
 
-### [Aufgabe 3 – Preisberechnung: Implementierung, Tests & Bugfix](./aufgabe3.md)
+### Aufgabe 3 – Preisberechnung: Implementierung, Tests & Bugfix
 - Implementiere die Methode `calculatePrice(...)`  
 - Schreibe einen **Testtreiber** (+ optional JUnit-Tests)  
 - Dokumentiere den **Fehler im Vorgabe-Code**  
 - Füge **Screenshots deiner Testläufe** ein  
+![alt text](screenshot.png)
+
 
 ---
