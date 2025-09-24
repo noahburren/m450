@@ -13,5 +13,6 @@ Alle Inhalte sind nach Wochen gegliedert.
 | 2     |Fr 29.08. |Teststrategie(n) | [Aufträge Woche 2](./29-08) |
 | 3     |Fr 05.09. | Testlevels<br> Unit-Tests | [Aufträge Woche 3](./05-09) |
 | 4     |Fr 12.09. | Abhängigkeiten zu Schnittstellen | [Aufträge Woche 4](./12-09) |
+| 4     |Fr 12.09. | Automatische Tests und Testing-Tools | [Aufträge Woche 5](./19-09) |
 
 ---
