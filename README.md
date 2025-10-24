@@ -16,3 +16,14 @@ Alle Inhalte sind nach Wochen gegliedert.
 | 5     |Fr 19.09. | Automatische Tests und Testing-Tools | [Aufträge Woche 5](./19-09) |
 
 ---
+
+---
+
+## 💡 Projektarbeit: ScentRank
+
+Im Rahmen des Moduls wurde als Abschlussprojekt das **ScentRank**-Projekt umgesetzt.  
+Es handelt sich um eine kleine Full-Stack-Anwendung (Angular Frontend + Spring Boot Backend) zur Bewertung von Parfums.  
+Dabei wurden Unit- und Component-Tests mit Mocking-Frameworks (Mockito / HttpTestingController) implementiert,  
+Code-Coverage-Reports (JaCoCo / Jest) generiert und über eine GitHub Actions-Pipeline automatisiert ausgewertet.
+
+🔗 **Projekt-Repository:** [github.com/noahburren/scentrank-mini](https://github.com/noahburren/ScentRank-m450)

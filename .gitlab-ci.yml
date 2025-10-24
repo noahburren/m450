@@ -1,0 +1,80 @@
+stages: [install, lint, test, build, deploy]
+image: node:20
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+    - node_modules/
+
+variables:
+  CI_GITLAB_PAGES: "true"
+
+before_script:
+  - node -v
+  - npm -v
+  - npm ci
+
+install:
+  stage: install
+  script:
+    - echo "Dependencies installed"
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1h
+
+lint:
+  stage: lint
+  script:
+    - npm run lint
+  allow_failure: true
+
+test:
+  stage: test
+  script:
+    - npm run test:ci
+    - mkdir -p public/reports/coverage public/reports/junit
+    - cp -r coverage public/reports/coverage/app || true
+    - cp -r reports/junit public/reports/junit || true
+    - |
+      cat > public/index.html << 'HTML'
+      <html><head><meta charset="utf-8"><title>Angular Test Reports</title></head>
+      <body>
+        <h1>Automated Reports</h1>
+        <ul>
+          <li><a href="reports/coverage/app/index.html">Coverage (HTML)</a></li>
+          <li><a href="reports/junit/junit.xml">JUnit XML</a></li>
+        </ul>
+      </body></html>
+      HTML
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - reports/junit/junit.xml
+    paths:
+      - coverage
+      - reports/junit/junit.xml
+      - public
+    expire_in: 1 week
+
+build:
+  stage: build
+  script:
+    - npm run build -- --configuration production
+    - mkdir -p public/app
+    - cp -r dist/* public/app/ || true
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+
+pages:
+  stage: deploy
+  script:
+    - echo "Publishing GitLab Pages"
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
